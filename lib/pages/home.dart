@@ -198,23 +198,18 @@ class _HomePageState extends State<HomePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Column(
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/icons/sun_cloud.svg',
-                                  height: 100,
-                                ),
-                              ],
+                            SvgPicture.asset(
+                              'assets/icons/sun_cloud.svg',
+                              height: 100,
                             ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
+                            const SizedBox(
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
                                     children: [
                                       Text(
                                         'Feels like',
-                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.white,
@@ -223,7 +218,6 @@ class _HomePageState extends State<HomePage> {
                                       SizedBox(width: 50),
                                       Text(
                                         '80',
-                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.white,
@@ -236,7 +230,6 @@ class _HomePageState extends State<HomePage> {
                                     children: [
                                       Text(
                                         'Humidity',
-                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.white,
@@ -245,7 +238,6 @@ class _HomePageState extends State<HomePage> {
                                       SizedBox(width: 50),
                                       Text(
                                         '70%',
-                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.white,
@@ -258,7 +250,6 @@ class _HomePageState extends State<HomePage> {
                                     children: [
                                       Text(
                                         'Visibility',
-                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.white,
@@ -267,7 +258,6 @@ class _HomePageState extends State<HomePage> {
                                       SizedBox(width: 50),
                                       Text(
                                         '20 mi',
-                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.white,
@@ -280,7 +270,6 @@ class _HomePageState extends State<HomePage> {
                                     children: [
                                       Text(
                                         'Visibility',
-                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.white,
@@ -289,7 +278,6 @@ class _HomePageState extends State<HomePage> {
                                       SizedBox(width: 50),
                                       Text(
                                         'Low 0',
-                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.white,
@@ -299,12 +287,9 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   SizedBox(height: 5),
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'Dew point',
-                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.white,
@@ -313,7 +298,6 @@ class _HomePageState extends State<HomePage> {
                                       SizedBox(width: 50),
                                       Text(
                                         '50',
-                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.white,
