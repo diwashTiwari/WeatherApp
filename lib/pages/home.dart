@@ -24,10 +24,11 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       body: Center(
         child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  const SizedBox(height: 10),
                   date(),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
@@ -205,119 +206,123 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ],
                             ),
-                            const Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Feels like',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Feels like',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(width: 20),
-                                    Text(
-                                      '80',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
+                                      SizedBox(width: 50),
+                                      Text(
+                                        '80',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 5),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Humidity',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Humidity',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(width: 20),
-                                    Text(
-                                      '70%',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
+                                      SizedBox(width: 50),
+                                      Text(
+                                        '70%',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 5),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Visibility',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Visibility',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(width: 20),
-                                    Text(
-                                      '20 mi',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
+                                      SizedBox(width: 50),
+                                      Text(
+                                        '20 mi',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 5),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Visibility',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Visibility',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(width: 20),
-                                    Text(
-                                      'Low 0',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
+                                      SizedBox(width: 50),
+                                      Text(
+                                        'Low 0',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 5),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Dew point',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Dew point',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(width: 20),
-                                    Text(
-                                      '50',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
+                                      SizedBox(width: 50),
+                                      Text(
+                                        '50',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -332,7 +337,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  const SizedBox(height: 10),
                 ],
               ),
             )),
