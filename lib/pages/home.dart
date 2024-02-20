@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:weatherapp/models/weather_data.dart';
+import 'package:weatherapp/models/week_data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,14 +12,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<WeatherDataModel> weatherData = [];
+  List<WeekData> weekData = [];
 
   void _getWeatherData() {
     weatherData = WeatherDataModel.getWeatherData();
   }
 
+  void _getWeekData() {
+    weekData = WeekData.getWeekData();
+  }
+
   @override
   Widget build(BuildContext context) {
     _getWeatherData();
+    _getWeekData();
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
@@ -99,6 +106,7 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
@@ -135,6 +143,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const SizedBox(width: 40),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
@@ -175,157 +184,238 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 20),
                   dailyData(),
                   const SizedBox(height: 20),
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        color: Colors.black87,
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Column(
-                      children: [
-                        const Row(
-                          children: [
-                            Text(
-                              'Details',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 20,
+                  weatherDetails(),
+                  const SizedBox(height: 20),
+                  weekDetails(),
+                  const SizedBox(height: 10),
+                ],
+              ),
+            )),
+      ),
+    );
+  }
+
+  Container weekDetails() {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+          color: Colors.black87, borderRadius: BorderRadius.circular(14)),
+      child: Column(
+        children: [
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                'High    |    Low',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+          const SizedBox(height: 10),
+          SizedBox(
+            height: 240,
+            child: ListView.separated(
+              separatorBuilder: (context, index) => const SizedBox(height: 10),
+              scrollDirection: Axis.vertical,
+              itemCount: weatherData.length,
+              itemBuilder: (context, index) {
+                return SizedBox(
+                  height: 40,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 70,
+                            child: Text(
+                              weekData[index].day,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      ),
+                      SvgPicture.asset(
+                        weekData[index].iconPath,
+                        height: 26,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            '${weekData[index].highTemp}°',
+                            style: const TextStyle(
                                 color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SvgPicture.asset(
-                              'assets/icons/sun_cloud.svg',
-                              height: 100,
-                            ),
-                            const SizedBox(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Feels like',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      SizedBox(width: 50),
-                                      Text(
-                                        '80',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 5),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Humidity',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      SizedBox(width: 50),
-                                      Text(
-                                        '70%',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 5),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Visibility',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      SizedBox(width: 50),
-                                      Text(
-                                        '20 mi',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 5),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Visibility',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      SizedBox(width: 50),
-                                      Text(
-                                        'Low 0',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 5),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Dew point',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      SizedBox(width: 50),
-                                      Text(
-                                        '50',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        const Text(
-                          'Tonight - Clear. Winds from SW to SSW at 10 to 11 mph (16.1 to 17.7 kph). The overnight low will be 69° F (20.0 ° C)',
-                          textAlign: TextAlign.center,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(width: 40),
+                          Text(
+                            '${weekData[index].lowTemp}°',
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                );
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Container weatherDetails() {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+          color: Colors.black87, borderRadius: BorderRadius.circular(14)),
+      child: Column(
+        children: [
+          const Row(
+            children: [
+              Text(
+                'Details',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SvgPicture.asset(
+                'assets/icons/sun_cloud.svg',
+                height: 100,
+              ),
+              const SizedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Feels like',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(width: 50),
+                        Text(
+                          '80',
+                          style: TextStyle(
+                            fontSize: 18,
                             color: Colors.white,
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                ],
+                    SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Text(
+                          'Humidity',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(width: 50),
+                        Text(
+                          '70%',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Text(
+                          'Visibility',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(width: 50),
+                        Text(
+                          '20 mi',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Text(
+                          'Visibility',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(width: 50),
+                        Text(
+                          'Low 0',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Text(
+                          'Dew point',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(width: 50),
+                        Text(
+                          '50',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            )),
+            ],
+          ),
+          const SizedBox(height: 20),
+          const Text(
+            'Tonight - Clear. Winds from SW to SSW at 10 to 11 mph (16.1 to 17.7 kph). The overnight low will be 69° F (20.0 ° C)',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
     );
   }

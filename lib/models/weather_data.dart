@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class WeatherDataModel {
   String time;
   String degree;
