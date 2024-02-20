@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:weatherapp/models/weather_data.dart';
 import 'package:weatherapp/models/week_data.dart';
+import 'package:weatherapp/pages/forecast.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,6 +31,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
+      drawer: appDrawer(),
       body: Center(
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -191,6 +194,53 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             )),
+      ),
+    );
+  }
+
+  Drawer appDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.black87,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    maxRadius: 44,
+                    minRadius: 44,
+                    backgroundImage: NetworkImage(
+                        'https://images.unsplash.com/photo-1640951613773-54706e06851d?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+                  ),
+                  SizedBox(height: 8),
+                  Text('Diwash Tiwari',
+                      style: TextStyle(
+                          fontSize: 26,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold))
+                ],
+              )),
+          ListTile(
+            leading: const Icon(
+              Icons.cloud,
+              size: 28,
+            ),
+            title: const Text('Forecast',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const ForecastPage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
@@ -484,18 +534,23 @@ class _HomePageState extends State<HomePage> {
 
   AppBar appBar() {
     return AppBar(
-        leading: GestureDetector(
-          child: Container(
-            width: 24,
-            alignment: Alignment.center,
-            margin: const EdgeInsets.all(10),
-            child: SvgPicture.asset(
-              'assets/icons/menu.svg',
-              height: 14,
-              width: 14,
+        leading: Builder(builder: (context) {
+          return IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: Container(
+              width: 24,
+              alignment: Alignment.center,
+              margin: const EdgeInsets.all(10),
+              child: SvgPicture.asset(
+                'assets/icons/menu.svg',
+                height: 14,
+                width: 14,
+              ),
             ),
-          ),
-        ),
+          );
+        }),
         title: const Text(
           'Biratnagar, Nepal',
           style: TextStyle(
