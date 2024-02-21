@@ -37,7 +37,7 @@ class ForecastModel {
     ));
 
     data.add(ForecastModel(
-      day: "THR",
+      day: "THU",
       iconPath: "assets/icons/sun.svg",
       degree: "80",
     ));

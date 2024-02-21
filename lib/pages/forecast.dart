@@ -122,7 +122,7 @@ class _ForecastPageState extends State<ForecastPage> {
           ),
         ),
         iconTheme: const IconThemeData(
-          color: Colors.white, //change your color here
+          color: Colors.white,
         ),
         toolbarHeight: 60,
         centerTitle: true,
