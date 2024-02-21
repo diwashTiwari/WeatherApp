@@ -1,6 +1,6 @@
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:weatherapp/pages/home.dart';
 
 class SplashPage extends StatefulWidget {
@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage>
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 4), () {
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (_) => const HomePage()));
     });
@@ -70,6 +70,15 @@ class _SplashPageState extends State<SplashPage>
                   color: Colors.grey[400],
                   fontWeight: FontWeight.w500),
             ),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(
+                strokeWidth: 2.8,
+                color: Colors.amber[800],
+              ),
+            )
           ],
         ),
       ),
